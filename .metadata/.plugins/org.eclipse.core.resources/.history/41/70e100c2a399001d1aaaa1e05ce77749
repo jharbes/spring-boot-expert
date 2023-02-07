@@ -1,0 +1,22 @@
+package com.jharbes.vendas.services;
+
+import org.springframework.stereotype.Service;
+
+import com.jharbes.vendas.entities.Cliente;
+import com.jharbes.vendas.repositories.ClientesRepository;
+
+@Service
+public class ClientesService {
+	
+	public ClientesService(ClientesRepository reposu)
+	
+	public void salvarCliente(Cliente cliente) {
+		validarCliente(cliente);
+		ClientesRepository clientesRepository=new ClientesRepository();
+		clientesRepository.persistir(cliente);
+	}
+	
+	public void validarCliente(Cliente cliente) {
+		// aplica validacoes
+	}
+}

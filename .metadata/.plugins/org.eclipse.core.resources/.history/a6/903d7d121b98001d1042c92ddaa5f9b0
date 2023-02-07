@@ -1,0 +1,6 @@
+package com.jharbes.vendas;
+
+@Configuration
+public class AppConfiguration {
+	
+}
