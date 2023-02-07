@@ -1,5 +1,0 @@
-package com.jharbes.vendas.repositories;
-
-public class ClientesRepository {
-
-}
