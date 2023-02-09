@@ -10,6 +10,8 @@ public class ClienteService {
 
 	private ClienteRepository repository;
 
+	// injecao de dependencia por meio do construtor a annotiation @Autowired pode
+	// ser omitida
 	public ClienteService(ClienteRepository repository) {
 		this.repository = repository;
 	}
