@@ -41,7 +41,7 @@ public class VendasappApplication {
             todosClientes.forEach(System.out::println);
 
             System.out.println("Buscando clientes");
-            clienteRepository.buscarPorNome("Cli").forEach(System.out::println);
+            clienteRepository.buscarPorNome("Jor").forEach(System.out::println);
 
 //            System.out.println("deletando clientes");
 //            clientes.obterTodos().forEach(c -> {
