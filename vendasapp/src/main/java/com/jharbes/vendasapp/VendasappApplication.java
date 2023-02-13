@@ -31,7 +31,7 @@ public class VendasappApplication {
 			List<Cliente> todosClientes = clienteRepository.obterTodos();
 			todosClientes.forEach(System.out::println);
 			
-			/*
+			
 			System.out.println("Atualizando clientes");
             todosClientes.forEach(c -> {
                 c.setNome(c.getNome() + " atualizado.");
@@ -56,7 +56,7 @@ public class VendasappApplication {
             }else{
                 todosClientes.forEach(System.out::println);
             }
-            */
+            
 		};
 	}
 
