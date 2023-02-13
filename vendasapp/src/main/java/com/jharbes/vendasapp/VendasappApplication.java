@@ -21,36 +21,36 @@ public class VendasappApplication {
 			Cliente cliente = new Cliente();
 
 			cliente.setNome("Jorge Nami Harbes");
-			clienteRepository.salvar(cliente);
+			clienteRepository.save(cliente);
 
 			Cliente cliente2 = new Cliente();
 
 			cliente2.setNome("Carolina Ferreira Alcantara");
-			clienteRepository.salvar(cliente2);
+			clienteRepository.save(cliente2);
 
-			List<Cliente> todosClientes = clienteRepository.obterTodos();
+			List<Cliente> todosClientes = clienteRepository.findAll();
 			todosClientes.forEach(System.out::println);
 			
 			
 			System.out.println("Atualizando clientes");
             todosClientes.forEach(c -> {
                 c.setNome(c.getNome() + " atualizado.");
-                clienteRepository.atualizar(c);
+                clienteRepository.save(c);
             });
 
-            todosClientes = clienteRepository.obterTodos();
+            todosClientes = clienteRepository.findAll();
             todosClientes.forEach(System.out::println);
 
             System.out.println("Buscando clientes");
-            clienteRepository.buscarPorNome("Jor").forEach(System.out::println);
+            clienteRepository.findByNomeLike("Jor").forEach(System.out::println);
             
 
-//            System.out.println("deletando clientes");
-//            clientes.obterTodos().forEach(c -> {
-//                clientes.deletar(c);
-//            });
+            System.out.println("deletando clientes");
+            clienteRepository.findAll().forEach(c -> {
+                clienteRepository.delete(c);
+            });
 
-            todosClientes = clienteRepository.obterTodos();
+            todosClientes = clienteRepository.findAll();
             if(todosClientes.isEmpty()){
                 System.out.println("Nenhum cliente encontrado.");
             }else{
