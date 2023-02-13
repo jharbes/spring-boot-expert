@@ -18,44 +18,13 @@ public class VendasappApplication {
 	public CommandLineRunner init(@Autowired ClienteRepository clienteRepository) {
 		return args -> {
 			System.out.println("Salvando clientes");
-			Cliente cliente = new Cliente();
-
-			cliente.setNome("Jorge Nami Harbes");
-			clienteRepository.save(cliente);
-
-			Cliente cliente2 = new Cliente();
-
-			cliente2.setNome("Carolina Ferreira Alcantara");
-			clienteRepository.save(cliente2);
-
-			List<Cliente> todosClientes = clienteRepository.findAll();
-			todosClientes.forEach(System.out::println);
 			
-			
-			System.out.println("Atualizando clientes");
-            todosClientes.forEach(c -> {
-                c.setNome(c.getNome() + " atualizado.");
-                clienteRepository.save(c);
-            });
+			clienteRepository.save(new Cliente("Jorge Nami Harbes"));
+            clienteRepository.save(new Cliente("Marcos Attilio Brasil Harbes"));
+            clienteRepository.save(new Cliente("Matheus Attilio Brasil Harbes"));
 
-            todosClientes = clienteRepository.findAll();
-            todosClientes.forEach(System.out::println);
-
-            System.out.println("Buscando clientes");
-            clienteRepository.findByNomeLike("Jor").forEach(System.out::println);
-            
-
-            System.out.println("deletando clientes");
-            clienteRepository.findAll().forEach(c -> {
-                clienteRepository.delete(c);
-            });
-
-            todosClientes = clienteRepository.findAll();
-            if(todosClientes.isEmpty()){
-                System.out.println("Nenhum cliente encontrado.");
-            }else{
-                todosClientes.forEach(System.out::println);
-            }
+            boolean existe = clienteRepository.existsByNome("Jorge Nami Harbes");
+            System.out.println("existe um cliente com o nome Jorge Nami Harbes	? " + existe);
             
 		};
 	}
