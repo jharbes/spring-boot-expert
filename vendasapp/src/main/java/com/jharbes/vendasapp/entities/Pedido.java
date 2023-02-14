@@ -2,6 +2,8 @@ package com.jharbes.vendasapp.entities;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -10,6 +12,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -29,6 +32,9 @@ public class Pedido {
 
 	@Column(name = "total", length = 20, precision = 2)
 	private BigDecimal totalPedido;
+
+	@OneToMany(mappedBy = "pedido")
+	private List<ItemPedido> itensPedidos = new ArrayList<>();
 
 	public Integer getId() {
 		return id;
@@ -60,6 +66,14 @@ public class Pedido {
 
 	public void setTotalPedido(BigDecimal totalPedido) {
 		this.totalPedido = totalPedido;
+	}
+
+	public List<ItemPedido> getItensPedidos() {
+		return itensPedidos;
+	}
+
+	public void setItensPedidos(List<ItemPedido> itensPedidos) {
+		this.itensPedidos = itensPedidos;
 	}
 
 }
