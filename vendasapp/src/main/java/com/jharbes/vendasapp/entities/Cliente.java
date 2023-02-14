@@ -1,12 +1,15 @@
 package com.jharbes.vendasapp.entities;
 
+import java.util.HashSet;
 import java.util.Objects;
+import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 // @Table so é utilizada caso a tabela tenha nome diferente da classe ou haja algum schema a ser determinado para a tabela
@@ -27,6 +30,9 @@ public class Cliente {
 	// length limita o numero de caracteres desse atributo no banco de dados
 	@Column(name = "nome", length = 100)
 	private String nome;
+	
+	@OneToMany(mappedBy = "cliente")
+	private Set<Pedido> pedidos = new HashSet<>();
 
 	public Cliente() {
 	}
@@ -56,6 +62,14 @@ public class Cliente {
 
 	public void setNome(String nome) {
 		this.nome = nome;
+	}
+
+	public Set<Pedido> getPedidos() {
+		return pedidos;
+	}
+
+	public void setPedidos(Set<Pedido> pedidos) {
+		this.pedidos = pedidos;
 	}
 
 	@Override
