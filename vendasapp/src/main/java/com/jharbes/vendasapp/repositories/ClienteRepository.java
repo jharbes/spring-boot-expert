@@ -14,12 +14,13 @@ public interface ClienteRepository extends JpaRepository<Cliente, Integer> {
 	// aqui utilizamos a notacao @Query para inserir uma query personalizada, ou
 	// seja nao utilizaremos as querys automaticas do JpaRepository
 	// @Param serve para referenciar o nome do parametro em questao
-	
+
 	// podemos tb fazer um consulta sql nativa como por exemplo:
-	// @Query(value="select * from cliente where c.nome like '%:nome%'", nativeQuery=true)
+	// @Query(value="select * from cliente where c.nome like '%:nome%'",
+	// nativeQuery=true)
 	@Query(value = "select c from Cliente c where c.nome like :nome")
 	List<Cliente> encontrarPorNome(@Param("nome") String nome);
-	
+
 	@Query("delete from Cliente c where c.nome=:nome") // opcional
 	@Modifying // apenas no uso de query manual que modifica
 	public void deleteByNome(String nome);
@@ -41,4 +42,10 @@ public interface ClienteRepository extends JpaRepository<Cliente, Integer> {
 	// os nomes dos metodos como find, exists, By etc sao convencoes utilizadas que
 	// o sistema ja entende suas funcionalidades
 	boolean existsByNome(String nome);
+
+	// left join para trazer os clientes tendo eles pedidos ou nao vinculados
+	@Query("select c from Cliente c left join fetch c.pedidos p where c.id = :id")
+	Cliente findClienteFetchPedidos(@Param("id") Integer id);
+	
+	Cliente findClienteById(Integer id);
 }

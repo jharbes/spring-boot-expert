@@ -6,6 +6,7 @@ import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -30,8 +31,11 @@ public class Cliente {
 	// length limita o numero de caracteres desse atributo no banco de dados
 	@Column(name = "nome", length = 100)
 	private String nome;
-	
-	@OneToMany(mappedBy = "cliente")
+
+	// esse fetch type ja eh o default, foi colocado apenas para mostrar que existe,
+	// o lazy nao tras as consultas de todos os pedidos automaticamente quando fizer
+	// uma consulta de cliente
+	@OneToMany(mappedBy = "cliente", fetch = FetchType.LAZY)
 	private Set<Pedido> pedidos = new HashSet<>();
 
 	public Cliente() {
