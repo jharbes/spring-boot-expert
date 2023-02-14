@@ -18,14 +18,17 @@ public class VendasappApplication {
 	public CommandLineRunner init(@Autowired ClienteRepository clienteRepository) {
 		return args -> {
 			System.out.println("Salvando clientes");
-			
-			clienteRepository.save(new Cliente("Jorge Nami Harbes"));
-            clienteRepository.save(new Cliente("Marcos Attilio Brasil Harbes"));
-            clienteRepository.save(new Cliente("Matheus Attilio Brasil Harbes"));
 
-            boolean existe = clienteRepository.existsByNome("Jorge Nami Harbes");
-            System.out.println("existe um cliente com o nome Jorge Nami Harbes	? " + existe);
-            
+			clienteRepository.save(new Cliente("Jorge Nami Harbes"));
+			clienteRepository.save(new Cliente("Marcos Attilio Brasil Harbes"));
+			clienteRepository.save(new Cliente("Matheus Attilio Brasil Harbes"));
+
+			boolean existe = clienteRepository.existsByNome("Jorge Nami Harbes");
+			List<Cliente> result = clienteRepository.encontrarPorNome("Marcos Attilio Brasil Harbes");
+			System.out.println("existe um cliente com o nome Jorge Nami Harbes	? " + existe);
+			result.forEach(c -> System.out.println(c));
+			result.forEach(System.out::println);
+
 		};
 	}
 
