@@ -2,7 +2,6 @@ package com.jharbes.vendasapp.entities;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -35,7 +34,7 @@ public class Pedido {
 	private BigDecimal totalPedido;
 
 	@OneToMany(mappedBy = "pedido")
-	private List<ItemPedido> itensPedido;
+	private List<ItemPedido> itens;
 
 	public Integer getId() {
 		return id;
@@ -69,12 +68,12 @@ public class Pedido {
 		this.totalPedido = totalPedido;
 	}
 
-	public List<ItemPedido> getItensPedido() {
-		return itensPedido;
+	public List<ItemPedido> getItens() {
+		return itens;
 	}
 
-	public void setItensPedido(List<ItemPedido> itensPedido) {
-		this.itensPedido = itensPedido;
+	public void setItens(List<ItemPedido> itens) {
+		this.itens = itens;
 	}
 
 	@Override
@@ -97,7 +96,7 @@ public class Pedido {
 	@Override
 	public String toString() {
 		return "Pedido [id=" + id + ", cliente=" + cliente + ", dataPedido=" + dataPedido + ", totalPedido="
-				+ totalPedido + ", itensPedidos=" + itensPedido + "]";
+				+ totalPedido + ", itens=" + itens + "]";
 	}
 
 }
