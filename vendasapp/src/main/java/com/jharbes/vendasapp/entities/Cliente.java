@@ -32,6 +32,9 @@ public class Cliente {
 	// length limita o numero de caracteres desse atributo no banco de dados
 	@Column(name = "nome", length = 100)
 	private String nome;
+	
+	@Column(name = "cpf", length = 11)
+	private String cpf;
 
 	// esse fetch type ja eh o default, foi colocado apenas para mostrar que existe,
 	// o lazy nao tras as consultas de todos os pedidos automaticamente quando fizer
@@ -79,6 +82,14 @@ public class Cliente {
 
 	public void setPedidos(Set<Pedido> pedidos) {
 		this.pedidos = pedidos;
+	}
+
+	public String getCpf() {
+		return cpf;
+	}
+
+	public void setCpf(String cpf) {
+		this.cpf = cpf;
 	}
 
 	@Override
