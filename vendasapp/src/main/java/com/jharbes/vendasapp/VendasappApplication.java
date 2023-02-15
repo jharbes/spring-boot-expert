@@ -12,14 +12,6 @@ import com.jharbes.vendasapp.repositories.ClienteRepository;
 @SpringBootApplication
 public class VendasappApplication {
 	
-	@Bean
-    public CommandLineRunner commandLineRunner(@Autowired ClienteRepository clientes){
-        return args -> {
-            Cliente c = new Cliente(null, "Fulano");
-            clientes.save(c);
-        };
-    }
-	
 	public static void main(String[] args) {
 		SpringApplication.run(VendasappApplication.class, args);
 	}

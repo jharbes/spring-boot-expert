@@ -12,6 +12,8 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 // @Table so é utilizada caso a tabela tenha nome diferente da classe ou haja algum schema a ser determinado para a tabela
 @Entity
 @Table(name = "cliente")
@@ -34,6 +36,10 @@ public class Cliente {
 	// esse fetch type ja eh o default, foi colocado apenas para mostrar que existe,
 	// o lazy nao tras as consultas de todos os pedidos automaticamente quando fizer
 	// uma consulta de cliente
+
+	// @JsonIgnore vai ignorar a propriedade pedidos quando o objeto for convertido
+	// em json
+	@JsonIgnore
 	@OneToMany(mappedBy = "cliente", fetch = FetchType.LAZY)
 	private Set<Pedido> pedidos;
 
