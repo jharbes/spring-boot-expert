@@ -6,6 +6,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.jharbes.vendasapp.entities.Cliente;
 
@@ -44,6 +45,7 @@ public interface ClienteRepository extends JpaRepository<Cliente, Integer> {
 	boolean existsByNome(String nome);
 
 	// left join para trazer os clientes tendo eles pedidos ou nao vinculados
+	@Transactional
 	@Query("select c from Cliente c left join fetch c.pedidos p where c.id = :id")
 	Cliente findClienteFetchPedidos(@Param("id") Integer id);
 	

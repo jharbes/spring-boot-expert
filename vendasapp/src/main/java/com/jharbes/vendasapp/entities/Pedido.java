@@ -31,11 +31,11 @@ public class Pedido {
 	@Column(name = "data_pedido")
 	private LocalDate dataPedido;
 
-	@Column(name = "total", length = 20, precision = 2)
+	@Column(name = "total", precision = 20, scale = 2)
 	private BigDecimal totalPedido;
 
 	@OneToMany(mappedBy = "pedido")
-	private List<ItemPedido> itensPedidos = new ArrayList<>();
+	private List<ItemPedido> itensPedido;
 
 	public Integer getId() {
 		return id;
@@ -69,12 +69,12 @@ public class Pedido {
 		this.totalPedido = totalPedido;
 	}
 
-	public List<ItemPedido> getItensPedidos() {
-		return itensPedidos;
+	public List<ItemPedido> getItensPedido() {
+		return itensPedido;
 	}
 
-	public void setItensPedidos(List<ItemPedido> itensPedidos) {
-		this.itensPedidos = itensPedidos;
+	public void setItensPedido(List<ItemPedido> itensPedido) {
+		this.itensPedido = itensPedido;
 	}
 
 	@Override
@@ -97,7 +97,7 @@ public class Pedido {
 	@Override
 	public String toString() {
 		return "Pedido [id=" + id + ", cliente=" + cliente + ", dataPedido=" + dataPedido + ", totalPedido="
-				+ totalPedido + ", itensPedidos=" + itensPedidos + "]";
+				+ totalPedido + ", itensPedidos=" + itensPedido + "]";
 	}
 
 }

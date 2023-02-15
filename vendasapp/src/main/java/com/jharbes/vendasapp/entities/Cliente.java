@@ -12,6 +12,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.transaction.Transactional;
 
 // @Table so é utilizada caso a tabela tenha nome diferente da classe ou haja algum schema a ser determinado para a tabela
 @Entity
@@ -35,8 +36,8 @@ public class Cliente {
 	// esse fetch type ja eh o default, foi colocado apenas para mostrar que existe,
 	// o lazy nao tras as consultas de todos os pedidos automaticamente quando fizer
 	// uma consulta de cliente
-	@OneToMany(mappedBy = "cliente", fetch = FetchType.LAZY)
-	private Set<Pedido> pedidos = new HashSet<>();
+	@OneToMany(mappedBy = "cliente")
+	private Set<Pedido> pedidos;
 
 	public Cliente() {
 	}
