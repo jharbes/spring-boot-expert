@@ -1,6 +1,10 @@
 package com.jharbes.vendasapp.controllers;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Example;
+import org.springframework.data.domain.ExampleMatcher;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -54,5 +58,15 @@ public class ProdutoController {
 			produtoRepository.save(produto);
 			return produtoExistente;
 		}).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Produto não localizado"));
+	}
+
+	@GetMapping
+	public List<Produto> find(Produto filtro) {
+		ExampleMatcher matcher = ExampleMatcher.matching().withIgnoreCase()
+				.withStringMatcher(ExampleMatcher.StringMatcher.CONTAINING);
+
+		Example example = Example.of(filtro, matcher);
+
+		return produtoRepository.findAll(example);
 	}
 }
