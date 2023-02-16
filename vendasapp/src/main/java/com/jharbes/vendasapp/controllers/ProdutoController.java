@@ -17,7 +17,6 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
 
-import com.jharbes.vendasapp.entities.Cliente;
 import com.jharbes.vendasapp.entities.Produto;
 import com.jharbes.vendasapp.repositories.ProdutoRepository;
 
@@ -40,12 +39,12 @@ public class ProdutoController {
 		return produtoRepository.save(produto);
 	}
 
-	@DeleteMapping
+	@DeleteMapping("/{id}")
 	@ResponseStatus(HttpStatus.NO_CONTENT)
 	public void delete(@PathVariable Integer id) {
 		produtoRepository.findById(id).map(produto -> {
 			produtoRepository.delete(produto);
-			return produto;
+			return Void.TYPE;
 		}).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Produto não localizado"));
 
 	}
