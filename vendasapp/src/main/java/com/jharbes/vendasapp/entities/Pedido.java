@@ -42,10 +42,10 @@ public class Pedido {
 
 	@Column(name = "total", precision = 20, scale = 2)
 	private BigDecimal totalPedido;
-	
+
 	@Enumerated(EnumType.STRING)
-    @Column(name = "status")
-    private StatusPedido status;
+	@Column(name = "status")
+	private StatusPedido status;
 
 	@OneToMany(mappedBy = "pedido")
 	private List<ItemPedido> items;

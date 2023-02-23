@@ -47,6 +47,7 @@ public class PedidoServiceImplementation implements PedidoService {
 		pedido.setTotalPedido(pedidoDto.getTotal());
 		pedido.setDataPedido(LocalDate.now());
 		pedido.setCliente(cliente);
+		pedido.setStatus(StatusPedido.REALIZADO);
 
 		List<ItemPedido> itemPedido = converterItems(pedido, pedidoDto.getItems());
 		pedidoRepository.save(pedido);

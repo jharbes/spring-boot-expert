@@ -14,6 +14,6 @@ public interface PedidoRepository extends JpaRepository<Pedido, Integer> {
 	
 	public List<Pedido> findByCliente(Cliente cliente);
 	
-	@Query(" select p from Pedido p left join fetch p.itens where p.id = :id ")
+	@Query(" select p from Pedido p left join fetch p.items where p.id = :id ")
     public Optional<Pedido> findByIdFetchItems(@Param("id") Integer id);
 }
