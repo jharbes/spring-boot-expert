@@ -55,7 +55,7 @@ public class PedidoController {
                 .cpf(pedido.getCliente().getCpf())
                 .nomeCliente(pedido.getCliente().getNome())
                 .totalPedido(pedido.getTotalPedido())
-                .items(converter(pedido.getItens()))
+                .items(converter(pedido.getItems()))
                 .build();
     }
 

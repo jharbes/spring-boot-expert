@@ -48,6 +48,6 @@ public class Pedido {
     private StatusPedido status;
 
 	@OneToMany(mappedBy = "pedido")
-	private List<ItemPedido> itens;
+	private List<ItemPedido> items;
 
 }

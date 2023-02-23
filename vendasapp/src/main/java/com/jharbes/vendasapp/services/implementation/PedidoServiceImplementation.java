@@ -52,7 +52,7 @@ public class PedidoServiceImplementation implements PedidoService {
 		pedidoRepository.save(pedido);
 		itemPedidoRepository.saveAll(itemPedido);
 
-		pedido.setItens(itemPedido);
+		pedido.setItems(itemPedido);
 
 		return pedido;
 	}
